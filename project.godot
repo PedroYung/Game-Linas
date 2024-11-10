@@ -25,6 +25,8 @@ window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/scale=2.4
 window/stretch/scale_mode="integer"
+window/per_pixel_transparency/allowed=true
+window/handheld/orientation=6
 mouse_cursor/custom_image="res://sprites/cursor.png"
 
 [input]

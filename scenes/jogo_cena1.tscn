@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8gntawyyw67x"]
+[gd_scene load_steps=12 format=3 uid="uid://c8gntawyyw67x"]
 
 [ext_resource type="Texture2D" uid="uid://3sia764ncwpn" path="res://sprites/fog.png" id="1_4vi7d"]
 [ext_resource type="PackedScene" uid="uid://d3d6i3kwoeh5h" path="res://scenes/player.tscn" id="1_smnso"]
 [ext_resource type="Texture2D" uid="uid://cucm8posjtl4j" path="res://sprites/fog_overlay.png" id="1_y06ho"]
 [ext_resource type="Texture2D" uid="uid://sebkwl1s8bad" path="res://sprites/Concrete_Floor.png" id="2_ej7or"]
 [ext_resource type="Texture2D" uid="uid://rk80031jq0s7" path="res://sprites/sky.png" id="3_0ffi5"]
+[ext_resource type="Texture2D" uid="uid://1wlb2pahv76o" path="res://sprites/city3.png" id="5_vfmcs"]
+[ext_resource type="Texture2D" uid="uid://cacbsqhxic2cv" path="res://sprites/city2.png" id="6_m1d0m"]
+[ext_resource type="Texture2D" uid="uid://cbbeteebpn51t" path="res://sprites/city1.png" id="8_of8a6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2dt67"]
 texture = ExtResource("2_ej7or")
@@ -19,12 +22,15 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
 sources/2 = SubResource("TileSetAtlasSource_2dt67")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u403m"]
+size = Vector2(32, 32)
+
 [node name="jogo_cena1" type="Node2D"]
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 
 [node name="fog_overlay" type="ParallaxLayer" parent="ParallaxBackground2"]
-position = Vector2(-1, 25)
+position = Vector2(-3, 19)
 
 [node name="Texture" type="Sprite2D" parent="ParallaxBackground2/fog_overlay"]
 z_index = 3
@@ -32,7 +38,7 @@ position = Vector2(543, 421)
 texture = ExtResource("1_y06ho")
 
 [node name="Player" parent="." instance=ExtResource("1_smnso")]
-position = Vector2(349, 425)
+position = Vector2(78, 656)
 collision_mask = 3
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -47,7 +53,7 @@ layer_1/name = "Layer1"
 [node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Texture" type="Sprite2D" parent="ParallaxBackground/sky"]
-position = Vector2(540, 424)
+position = Vector2(540, 440)
 texture = ExtResource("3_0ffi5")
 
 [node name="clouds_1" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -58,25 +64,34 @@ texture = ExtResource("3_0ffi5")
 
 [node name="Texture" type="Sprite2D" parent="ParallaxBackground/clouds_2"]
 
-[node name="city_4" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Texture" type="Sprite2D" parent="ParallaxBackground/city_4"]
-
 [node name="city_3" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Texture" type="Sprite2D" parent="ParallaxBackground/city_3"]
+position = Vector2(568, 423)
+texture = ExtResource("5_vfmcs")
 
 [node name="city_2" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Texture" type="Sprite2D" parent="ParallaxBackground/city_2"]
+position = Vector2(721, 293)
+texture = ExtResource("6_m1d0m")
 
 [node name="fog" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Texture" type="Sprite2D" parent="ParallaxBackground/fog"]
-position = Vector2(540, 424)
+position = Vector2(540, 368)
 scale = Vector2(1, 1.2)
 texture = ExtResource("1_4vi7d")
 
 [node name="city_1" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Texture" type="Sprite2D" parent="ParallaxBackground/city_1"]
+position = Vector2(781, 261)
+texture = ExtResource("8_of8a6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-18, 369)
+scale = Vector2(1, 27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_u403m")
