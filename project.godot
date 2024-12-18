@@ -19,15 +19,31 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/initial_screen=720
+window/size/initial_screen=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="viewport"
-window/stretch/scale=2.4
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
 window/per_pixel_transparency/allowed=true
 window/handheld/orientation=6
 mouse_cursor/custom_image="res://sprites/cursor.png"
+
+[file_customization]
+
+folder_colors={
+"res://font/": "red",
+"res://scenes/": "green",
+"res://scripts/": "yellow",
+"res://soundtrack/": "blue",
+"res://sprites/": "purple"
+}
+
+[global_group]
+
+WorldKill="Blocks who kill the player"
+player=""
 
 [input]
 
@@ -62,6 +78,10 @@ MV_Jump={
 2d_physics/layer_2="world"
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="itens"
+2d_physics/layer_5="LevelPass"
+2d_physics/layer_6="kill"
+2d_physics/layer_7="Lina"
+2d_physics/layer_8="Portal"
 
 [rendering]
 

@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://g6edxg5efql2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jl3tg"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_spvdd"]
+max_value = 0.3
+_data = [Vector2(0, 0), 0.0, 1.45443, 0, 0, Vector2(0.493333, 0.3), 0.0, 0.0, 0, 0, Vector2(0.986667, 0.0131868), -1.45604, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_syxii"]
+curve = SubResource("Curve_spvdd")
+
+[sub_resource type="Gradient" id="Gradient_3hgfu"]
+colors = PackedColorArray(1, 1, 1, 0.0784314, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mytkb"]
+gradient = SubResource("Gradient_3hgfu")
+
+[sub_resource type="Curve" id="Curve_0hryu"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_p8to2"]
+max_value = 30.0
+_data = [Vector2(0, 15.4945), 0.0, 71.9281, 0, 0, Vector2(0.253333, 30), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ogwvi"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ieq01"]
+curve_x = SubResource("Curve_0hryu")
+curve_y = SubResource("Curve_p8to2")
+curve_z = SubResource("Curve_ogwvi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wxcn2"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -720, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1080, 720, 1)
+gravity = Vector3(0, 3000, 0)
+scale_min = 0.2
+scale_over_velocity_curve = SubResource("CurveXYZTexture_ieq01")
+color_initial_ramp = SubResource("GradientTexture1D_mytkb")
+alpha_curve = SubResource("CurveTexture_syxii")
+
+[node name="rain_GPUParticles2D" type="GPUParticles2D"]
+z_index = 20
+material = SubResource("CanvasItemMaterial_jl3tg")
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_wxcn2")
+lifetime = 0.75
+visibility_rect = Rect2(-720, -1080, 1080, 720)

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://ehdwym6uhwgp"]
+
+[ext_resource type="Texture2D" uid="uid://b1mowtf0q63vh" path="res://sprites/lina_idle.png" id="2_f25by"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48sml"]
+atlas = ExtResource("2_f25by")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr840"]
+atlas = ExtResource("2_f25by")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stkcm"]
+atlas = ExtResource("2_f25by")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8h32l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48sml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr840")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stkcm")
+}],
+"loop": true,
+"name": &"Lina_Idle",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ryyi7"]
+
+[node name="Lina" type="CharacterBody2D"]
+
+[node name="lina_body2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8h32l")
+animation = &"Lina_Idle"
+autoplay = "Lina_Idle"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ryyi7")
+
+[node name="lina_animator2" type="AnimationPlayer" parent="."]
+root_node = NodePath("")

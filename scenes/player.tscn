@@ -97,11 +97,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 126
 script = ExtResource("1_xrqpc")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+shape = SubResource("CapsuleShape2D_bqwrr")
+
+[node name="anim" type="AnimatedSprite2D" parent="." groups=["player"]]
+sprite_frames = SubResource("SpriteFrames_x7l0f")
+animation = &"Run"
+autoplay = "Idle"
+frame = 1
+frame_progress = 0.662688
+
+[node name="animator" type="AnimationPlayer" parent="." groups=["player"]]
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -80)
+position = Vector2(0, -24)
 zoom = Vector2(1.6, 1.6)
 limit_left = 0
 limit_smoothed = true
@@ -112,13 +125,3 @@ drag_left_margin = 0.5
 drag_right_margin = 0.5
 editor_draw_limits = true
 editor_draw_drag_margin = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_bqwrr")
-
-[node name="anim" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_x7l0f")
-animation = &"Idle"
-autoplay = "Idle"
-
-[node name="animator" type="AnimationPlayer" parent="."]
